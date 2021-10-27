@@ -1,0 +1,8 @@
+{
+  "name": "whistle-switch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:colbyr/whistle-switch.git",
+  "author": "Colby Rabideau<me@colbyr.com>",
+  "license": "MIT"
+}
