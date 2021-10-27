@@ -1,8 +1,16 @@
 {
   "name": "whistle-switch",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./bin/start.sh",
   "repository": "git@github.com:colbyr/whistle-switch.git",
   "author": "Colby Rabideau<me@colbyr.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@stdlib/utils-circular-buffer": "^0.0.6",
+    "hap-nodejs": "^0.9.6",
+    "lodash": "^4.17.21",
+    "meyda": "^5.2.2",
+    "puppeteer": "^10.4.0",
+    "tone": "^14.7.77"
+  }
 }
