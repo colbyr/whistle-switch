@@ -1,18 +1,33 @@
 import { last, once } from "lodash";
+import {getFrequenciesByBin} from './frequency'
+import { FrequencyToNoteConverter, noteFullName, NoteName } from "./note";
+import { makeRollingMean, makeRollingMode } from "./smoothing";
 import {
   diffNotes,
-  findLoudest,
-  FrequencyToNoteConverter,
-  getFrequenciesByBin,
   makeRelativeMelodyMatcher,
-  makeRollingMean,
-  makeRollingMode,
-  noteFullName,
-  NoteName,
-} from "../octavious";
+} from "./relativeMelody";
 import { Patterns, send } from "./comms";
 import { createMeydaAnalyzer } from "meyda";
 import CircularBuffer from "@stdlib/utils-circular-buffer";
+
+export function findLoudest(sample: number[] | Uint8Array | Float32Array) {
+  let loudestBinSoFar = -1;
+  let loudestSoFar = 0;
+
+  for (let i = 0; i <= sample.length; i++) {
+    const loudness = sample[i];
+    if (loudness > loudestSoFar) {
+      loudestSoFar = loudness;
+      loudestBinSoFar = i;
+    }
+  }
+
+  if (loudestSoFar === 0) {
+    return null;
+  }
+
+  return { loudness: loudestSoFar, bin: loudestBinSoFar };
+}
 
 const DEFAULT_FFT_SIZE = Math.pow(2, 11);
 const MODE_SIZE = 24;
