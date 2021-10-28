@@ -1,12 +1,14 @@
 import puppeteer from "puppeteer";
 import { Patterns, receive } from "./comms.js";
-import {
+import HAP from "hap-nodejs";
+
+const {
   Accessory,
   Categories,
   Characteristic,
   Service,
   uuid,
-} from "hap-nodejs";
+} = HAP
 
 const HEADLESS_PORT = 6767;
 const HEADLESS_URL = `http://localhost:${HEADLESS_PORT}/whistlee-headless/`;
