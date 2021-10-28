@@ -1,14 +1,10 @@
 import { last, once } from "lodash";
 import {getFrequenciesByBin} from './frequency'
 import { FrequencyToNoteConverter, noteFullName, NoteName } from "./note";
-import { makeRollingMean, makeRollingMode } from "./smoothing";
-import {
-  diffNotes,
-  makeRelativeMelodyMatcher,
-} from "./relativeMelody";
+import { makeRollingMean } from "./smoothing";
+import { makeRelativeMelodyMatcher } from "./relativeMelody";
 import { Patterns, send } from "./comms";
 import { createMeydaAnalyzer } from "meyda";
-import CircularBuffer from "@stdlib/utils-circular-buffer";
 
 export function findLoudest(sample: number[] | Uint8Array | Float32Array) {
   let loudestBinSoFar = -1;
@@ -89,11 +85,6 @@ async function start() {
     // introSource.connect(audioContext.destination);
     // introAudio.play();
 
-    const smoothFreq = makeRollingMode<null | number>({
-      defaultValue: null,
-      bufferSize: 32,
-    });
-    const freqBuffer = new CircularBuffer(128);
     createMeydaAnalyzer({
       startImmediately: true,
       sampleRate: audioContext.sampleRate,
@@ -109,48 +100,12 @@ async function start() {
         const avgSpread = getAverageSpread(spectralSpread);
         const loudest = findLoudest(amplitudeSpectrum);
 
-        if (
-          !loudest ||
-          pauseListening ||
-          !loudest ||
-          spectralSpread > avgSpread
-        ) {
-          freqBuffer.clear();
-          return;
-        }
+        const note =
+          !pauseListening && loudest && spectralSpread < avgSpread
+            ? toNote.number(frequencyByBin[loudest.bin])
+            : null;
 
-        const freq = frequencyByBin[loudest.bin];
-        const modedFreq = smoothFreq(freq);
-        const mostRecentFreq = last(freqBuffer.toArray());
-        if (modedFreq !== mostRecentFreq) {
-          freqBuffer.push(modedFreq);
-          const last3 = freqBuffer
-            .toArray()
-            .slice(-3)
-            .filter((freq) => !!freq);
-          console.log(last3);
-          const converter = new FrequencyToNoteConverter(last3[0]);
-          console.log(
-            last3.map(
-              (freq) => `${converter.name(freq)}${converter.octave(freq)}`
-            )
-          );
-          const last3numbers = last3.map((freq) => converter.number(freq));
-          const steps = [];
-          // kind of like a prefix sum
-          for (let i = 1; i < last3numbers.length; i++) {
-            const prev = last3numbers[i - 1];
-            const current = last3numbers[i];
-            steps.push(diffNotes(prev, current));
-          }
-          console.info(steps);
-        }
-
-        // if (note) {
-        //   console.info({ note, freq: loudest && frequencyByBin[loudest?.bin] });
-        // }
-
-        // matchers.forEach((matcher) => matcher(note));
+        matchers.forEach((matcher) => matcher(note));
       },
     });
   });
