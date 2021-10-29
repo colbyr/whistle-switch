@@ -1,5 +1,5 @@
-import { last, once } from "lodash";
-import {getFrequenciesByBin} from './frequency'
+import once from "lodash/once";
+import { getFrequenciesByBin } from "./frequency";
 import { FrequencyToNoteConverter, noteFullName, NoteName } from "./note";
 import { makeRollingMean } from "./smoothing";
 import { makeRelativeMelodyMatcher } from "./relativeMelody";
