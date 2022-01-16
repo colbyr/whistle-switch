@@ -1,7 +1,21 @@
 {
   "name": "whistle-switch",
-  "version": "1.1.4",
-  "repository": "git@github.com:colbyr/whistle-switch.git",
+  "description": "Control Homekit by whistling 🎶",
+  "homepage": "https://github.com/colbyr/whistle-switch#readme",
+  "keywords": [
+    "home-automation",
+    "homekit",
+    "homekit-accessory",
+    "hap",
+    "music",
+    "siri",
+    "whistle"
+  ],
+  "version": "1.1.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colbyr/whistle-switch.git"
+  },
   "author": "Colby Rabideau<me@colbyr.com>",
   "license": "MIT",
   "type": "module",
