@@ -8,7 +8,7 @@ import HAP from "hap-nodejs";
 const { Accessory, Categories, Characteristic, Service, uuid } = HAP;
 
 const HEADLESS_PORT = 6767;
-const HEADLESS_URL = `http://localhost:${HEADLESS_PORT}/whistlee-headless/`;
+const HEADLESS_URL = `http://localhost:${HEADLESS_PORT}/whistle-switch-headless/`;
 
 const envDefaults = {
   WHISTLE_SWITCH_CHROME_EXECUTABLE_PATH: undefined,
@@ -47,13 +47,16 @@ const {
   WHISTLE_SWITCH_USERNAME,
 } = Env;
 
-const whistleeUuid = uuid.generate(WHISTLE_SWITCH_ID);
-const whistleeAccessory = new Accessory("Whistlee v0", whistleeUuid);
+const whistleSwitchUuid = uuid.generate(WHISTLE_SWITCH_ID);
+const whistleSwitchAccessory = new Accessory(
+  "Whistle Switch v1",
+  whistleSwitchUuid
+);
 
 const callbacks = Object.entries(Patterns).reduce(
   (acc, [key, { name, pattern }], index) => {
     const switchService = new Service.StatelessProgrammableSwitch(
-      `Whistlee ${name}`,
+      `Whistle Switch ${name}`,
       key
     );
 
@@ -63,7 +66,7 @@ const callbacks = Object.entries(Patterns).reduce(
       .getCharacteristic(Characteristic.ServiceLabelIndex)
       .setValue(index + 1);
 
-    whistleeAccessory.addService(switchService);
+    whistleSwitchAccessory.addService(switchService);
 
     acc[key] = () => {
       log("match:", { name, pattern });
@@ -80,7 +83,7 @@ const callbacks = Object.entries(Patterns).reduce(
 
 // once everything is set up, we publish the accessory. Publish should always be the last step!
 if (!DEBUG) {
-  whistleeAccessory.publish({
+  whistleSwitchAccessory.publish({
     username: WHISTLE_SWITCH_USERNAME,
     pincode: WHISTLE_SWITCH_PIN,
     port: WHISTLE_SWITCH_PORT,
