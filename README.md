@@ -51,7 +51,7 @@ These are the musical patterns overlayed on the homekit button config screen.
 
 > Note: Right now, `whistle-switch` only triggers the "Single Press" action.
 
-![5-homekit-buttons](https://user-images.githubusercontent.com/478109/149676783-fa0f0b62-7ddf-45e8-9c12-e5d5cd289880.jpeg)
+<img alt="Whistle Switch Homekit button map" src="https://user-images.githubusercontent.com/478109/149676783-fa0f0b62-7ddf-45e8-9c12-e5d5cd289880.jpeg" height="400" />
 
 </details>
 
