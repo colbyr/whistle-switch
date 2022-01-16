@@ -25,6 +25,8 @@ Once the switch is running on your local network, you should be able to add it t
 
 <details><summary>Detailed Homekit Setup</summary>
 
+|      |      |
+| :--: | :--: |
 | ![1-add-accessory](https://user-images.githubusercontent.com/478109/149674991-a0eddebf-ddc5-489e-8d71-38fb4b9f0ba9.png) | Select "More Options.." from the Add Accessory card. |
 | ![2-select-whistle-switch](https://user-images.githubusercontent.com/478109/149674994-088c744f-0abe-4492-b2d3-7d9a6ed8558a.png) | Tap the accessort called "Whistle Switch ..." |
 | ![3-uncertified-accessory](https://user-images.githubusercontent.com/478109/149674996-d2c7babc-d0a4-4d49-b699-4c7e337faf7f.png) | Tap "Add Anyway" when you're prompted about an "uncertified" accessory. |
@@ -37,15 +39,15 @@ Once the switch is running on your local network, you should be able to add it t
 You'll find the default configs in [controller.js](https://github.com/colbyr/whistle-switch/blob/694db8313b22180737626b05d5a4ffeeeb7542dc/src/controller.js#L10-L18).
 The switch should work just fine with the defaults but you can override them by setting local environment variables.
 
-|         Environment Variable          |         Default          |
+|  Environment Variable                 |  Default                 |
 | :-----------------------------------: | :----------------------: |
 | WHISTLE_SWITCH_CHROME_EXECUTABLE_PATH |                          |
-|         WHISTLE_SWITCH_DEBUG          |          false           |
-|           WHISTLE_SWITCH_ID           | colbyr.whistle-switch.v1 |
-|     WHISTLE_SWITCH_LISTENER_PORT      |          47130           |
-|          WHISTLE_SWITCH_PORT          |          47130           |
-|       WHISTLE_SWITCH_SETUP_CODE       |        123-45-678        |
-|        WHISTLE_SWITCH_USERNAME        |    27:52:11:F5:BC:05     |
+| WHISTLE_SWITCH_DEBUG                  | false                    |
+| WHISTLE_SWITCH_ID                     | colbyr.whistle-switch.v1 |
+| WHISTLE_SWITCH_LISTENER_PORT          | 47130                    |
+| WHISTLE_SWITCH_PORT                   | 47130                    |
+| WHISTLE_SWITCH_SETUP_CODE             | 123-45-678               |
+| WHISTLE_SWITCH_USERNAME               | 27:52:11:F5:BC:05        |
 
 ````
 
