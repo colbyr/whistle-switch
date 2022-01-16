@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "start": "./start.sh",
-    "dev": "WHISTLEE_DEBUG=true ./start.sh"
+    "dev": "WHISTLE_SWITCH_DEBUG=true ./start.sh"
   },
   "bin": {
     "whistle-switch": "./start.sh"
