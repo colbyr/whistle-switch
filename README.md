@@ -49,7 +49,7 @@ The switch should work just fine with the defaults but you can override them by 
 | WHISTLE_SWITCH_SETUP_CODE             | 123-45-678               |
 | WHISTLE_SWITCH_USERNAME               | 27:52:11:F5:BC:05        |
 
-````
+```
 
 ## Resetting the switch
 
