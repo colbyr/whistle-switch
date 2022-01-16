@@ -7,13 +7,11 @@ import HAP from "hap-nodejs";
 
 const { Accessory, Categories, Characteristic, Service, uuid } = HAP;
 
-const HEADLESS_PORT = 6767;
-const HEADLESS_URL = `http://localhost:${HEADLESS_PORT}/whistle-switch-headless/`;
-
 const envDefaults = {
   WHISTLE_SWITCH_CHROME_EXECUTABLE_PATH: undefined,
   WHISTLE_SWITCH_DEBUG: "false",
   WHISTLE_SWITCH_ID: "colbyr.whistle-switch.v1",
+  WHISTLE_SWITCH_LISTENER_PORT: 6767,
   WHISTLE_SWITCH_USERNAME: "27:52:11:F5:BC:05",
   WHISTLE_SWITCH_PIN: "123-45-678",
   WHISTLE_SWITCH_PORT: 47130,
@@ -22,7 +20,7 @@ const envDefaults = {
 const Env = Object.entries(envDefaults).reduce((env, [key, defaultValue]) => {
   env[key] = process.env[key] ?? defaultValue;
   return env;
-});
+}, {});
 
 const DEBUG = Env.WHISTLE_SWITCH_DEBUG === "true";
 
@@ -42,10 +40,13 @@ ${Object.entries(Env)
 const {
   WHISTLE_SWITCH_CHROME_EXECUTABLE_PATH,
   WHISTLE_SWITCH_ID,
+  WHISTLE_SWITCH_LISTENER_PORT,
   WHISTLE_SWITCH_PIN,
   WHISTLE_SWITCH_PORT,
   WHISTLE_SWITCH_USERNAME,
 } = Env;
+
+const WHISTLE_SWITCH_LISTENER_URL = `http://localhost:${WHISTLE_SWITCH_LISTENER_PORT}/whistle-switch-listener/`;
 
 const whistleSwitchUuid = uuid.generate(WHISTLE_SWITCH_ID);
 const whistleSwitchAccessory = new Accessory(
@@ -102,7 +103,9 @@ const log = (...args) => console.log(new Date().toString(), "|", ...args);
     ignoreDefaultArgs: ["--mute-audio"],
   });
   const context = browser.defaultBrowserContext();
-  await context.overridePermissions(HEADLESS_URL, ["microphone"]);
+  await context.overridePermissions(WHISTLE_SWITCH_LISTENER_URL, [
+    "microphone",
+  ]);
 
   const [page] = await browser.pages();
 
@@ -118,7 +121,7 @@ const log = (...args) => console.log(new Date().toString(), "|", ...args);
 
     log(payload);
   });
-  await page.goto(HEADLESS_URL);
+  await page.goto(WHISTLE_SWITCH_LISTENER_URL);
   await page.mouse.move(0, 0);
   await page.mouse.move(100, 100);
   await page.click("#start");
