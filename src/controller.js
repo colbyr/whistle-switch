@@ -13,7 +13,7 @@ const envDefaults = {
   WHISTLE_SWITCH_ID: "colbyr.whistle-switch.v1",
   WHISTLE_SWITCH_LISTENER_PORT: 6767,
   WHISTLE_SWITCH_USERNAME: "27:52:11:F5:BC:05",
-  WHISTLE_SWITCH_PIN: "123-45-678",
+  WHISTLE_SWITCH_SETUP_CODE: "123-45-678",
   WHISTLE_SWITCH_PORT: 47130,
 };
 
@@ -41,7 +41,7 @@ const {
   WHISTLE_SWITCH_CHROME_EXECUTABLE_PATH,
   WHISTLE_SWITCH_ID,
   WHISTLE_SWITCH_LISTENER_PORT,
-  WHISTLE_SWITCH_PIN,
+  WHISTLE_SWITCH_SETUP_CODE,
   WHISTLE_SWITCH_PORT,
   WHISTLE_SWITCH_USERNAME,
 } = Env;
@@ -86,7 +86,7 @@ const callbacks = Object.entries(Patterns).reduce(
 if (!DEBUG) {
   whistleSwitchAccessory.publish({
     username: WHISTLE_SWITCH_USERNAME,
-    pincode: WHISTLE_SWITCH_PIN,
+    pincode: WHISTLE_SWITCH_SETUP_CODE,
     port: WHISTLE_SWITCH_PORT,
     category: Categories.PROGRAMMABLE_SWITCH, // value here defines the symbol shown in the pairing screen
   });
