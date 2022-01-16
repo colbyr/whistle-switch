@@ -5,7 +5,7 @@ Control Homekit by whistling 🎶
 I built this during my batch at [the Recurse Center](https://www.recurse.com/) in 2021.
 I whistle a lot, and I wanted to put it to some constructive use!
 
-## Installation
+## Setup
 
 The easiest way to install the switch is with `yarn` or `npm`.
 
@@ -19,7 +19,7 @@ If you install it globally, then you can run it from wherever.
 whistle-switch
 ```
 
-## Connect with Homekit
+### Connect with Homekit
 
 Once the switch is running on your local network, you should be able to add it to Homekit on your iOS device.
 
@@ -34,7 +34,7 @@ Once the switch is running on your local network, you should be able to add it t
 
 </details>
 
-## Configuration
+### Advanced Configuration
 
 You'll find the default configs in [controller.js](https://github.com/colbyr/whistle-switch/blob/694db8313b22180737626b05d5a4ffeeeb7542dc/src/controller.js#L10-L18).
 The switch should work just fine with the defaults but you can override them by setting local environment variables.
