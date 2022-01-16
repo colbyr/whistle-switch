@@ -45,15 +45,11 @@ It'll try to match patterns regardless of key or rhythm.
 | Button 2         | Five Three One      | G E C     |
 | Button 3         | One Two One Two One | C D C D C |
 
-<details><summary>Homekit "Button" Map</summary>
-
-These are the musical patterns overlayed on the homekit button config screen.
+#### Homekit "Button" Map
 
 > Note: Right now, `whistle-switch` only triggers the "Single Press" action.
 
 <img alt="Whistle Switch Homekit button map" src="https://user-images.githubusercontent.com/478109/149676783-fa0f0b62-7ddf-45e8-9c12-e5d5cd289880.jpeg" height="400" />
-
-</details>
 
 ## Advanced Configuration
 
