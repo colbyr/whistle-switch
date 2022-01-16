@@ -6,13 +6,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "./bin/start.sh",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "start": "./start.sh",
+    "dev": "WHISTLEE_DEBUG=true ./start.sh"
   },
   "bin": {
-    "whistle-switch": "./bin/start.sh"
+    "whistle-switch": "./start.sh"
   },
   "dependencies": {
     "@stdlib/utils-circular-buffer": "^0.0.6",

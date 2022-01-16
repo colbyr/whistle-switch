@@ -10,7 +10,22 @@ const { Accessory, Categories, Characteristic, Service, uuid } = HAP;
 const HEADLESS_PORT = 6767;
 const HEADLESS_URL = `http://localhost:${HEADLESS_PORT}/whistlee-headless/`;
 
-const DEBUG = !!process.env.WHISTLEE_DEBUG;
+const DEBUG = process.env.WHISTLEE_DEBUG === "true";
+
+if (DEBUG) {
+  console.info(
+    `
+Whistle Switch Env
+==================
+
+${Object.entries(process.env)
+  .filter(([key]) => key.startsWith("WHISTLEE_"))
+  .map(([key, value]) => `${key}: ${value}`)
+  .join("\n")}
+`
+  );
+}
+
 const whistleeUuid = uuid.generate(process.env.WHISTLEE_SWITCH_ID);
 const whistleeAccessory = new Accessory("Whistlee v0", whistleeUuid);
 
