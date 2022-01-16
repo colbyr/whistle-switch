@@ -1,7 +1,7 @@
 #!/bin/sh
 trap "kill 0" EXIT
 
-DIR=$(pwd)
+DIR=$(dirname "$0")
 
 echo "🚧 starting vite..."
 $DIR/node_modules/.bin/vite --port 6767 > /dev/null 2>&1 &
