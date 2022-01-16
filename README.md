@@ -5,10 +5,12 @@ Control Homekit by whistling 🎶
 I built this during my batch at [the Recurse Center](https://www.recurse.com/) in 2021.
 I whistle a lot, and I wanted to put it to some constructive use!
 
-## Setup
+## Installation
 
 ```sh
 yarn global add whistle-switch
+
+whistle-switch
 ```
 
 ## Configuration
