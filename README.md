@@ -49,8 +49,6 @@ The switch should work just fine with the defaults but you can override them by 
 | WHISTLE_SWITCH_SETUP_CODE             | 123-45-678               |
 | WHISTLE_SWITCH_USERNAME               | 27:52:11:F5:BC:05        |
 
-```
-
 ## Resetting the switch
 
 If your whistle-switch gets into a bad state with your homekit setup, you can reset your install.
@@ -61,6 +59,6 @@ Then remove the `persist` directory if it exists.
 
 ```sh
 rm -rf persist
-````
+```
 
 Start the switch again, and you should be able to connect to Homekit as a completely new accessory.
