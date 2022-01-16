@@ -25,12 +25,10 @@ Once the switch is running on your local network, you should be able to add it t
 
 <details><summary>Detailed Homekit Setup</summary>
 
-|                                                                                                                                 |                                                                                                                                                |
-| :-----------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: |
-|     ![1-add-accessory](https://user-images.githubusercontent.com/478109/149674991-a0eddebf-ddc5-489e-8d71-38fb4b9f0ba9.png)     |                                              Select "More Options.." from the Add Accessory card.                                              |
-| ![2-select-whistle-switch](https://user-images.githubusercontent.com/478109/149674994-088c744f-0abe-4492-b2d3-7d9a6ed8558a.png) |                                                 Tap the accessort called "Whistle Switch ..."                                                  |
-| ![3-uncertified-accessory](https://user-images.githubusercontent.com/478109/149674996-d2c7babc-d0a4-4d49-b699-4c7e337faf7f.png) |                                    Tap "Add Anyway" when you're prompted about an "uncertified" accessory.                                     |
-|      ![4-setup-code](https://user-images.githubusercontent.com/478109/149674998-9105d282-4529-4574-a724-703bd964afe3.png)       | The default setup code is "123-45-678", but you can change it to anything you want using the `WHISTLE_SWITCH_SETUP_CODE` environment variable. |
+| ![1-add-accessory](https://user-images.githubusercontent.com/478109/149674991-a0eddebf-ddc5-489e-8d71-38fb4b9f0ba9.png) | Select "More Options.." from the Add Accessory card. |
+| ![2-select-whistle-switch](https://user-images.githubusercontent.com/478109/149674994-088c744f-0abe-4492-b2d3-7d9a6ed8558a.png) | Tap the accessort called "Whistle Switch ..." |
+| ![3-uncertified-accessory](https://user-images.githubusercontent.com/478109/149674996-d2c7babc-d0a4-4d49-b699-4c7e337faf7f.png) | Tap "Add Anyway" when you're prompted about an "uncertified" accessory. |
+| ![4-setup-code](https://user-images.githubusercontent.com/478109/149674998-9105d282-4529-4574-a724-703bd964afe3.png) | The default setup code is "123-45-678", but you can change it to anything you want using the `WHISTLE_SWITCH_SETUP_CODE` environment variable. |
 
 </details>
 
