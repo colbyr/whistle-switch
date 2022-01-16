@@ -10,14 +10,24 @@ I whistle a lot, and I wanted to put it to some constructive use!
 The easiest way to install the switch is with `yarn` or `npm`.
 
 ```sh
-yarn global add whistle-switch
+$ yarn global add whistle-switch
 ```
 
 If you install it globally, then you can run it from wherever.
 
 ```sh
-whistle-switch
+$ whistle-switch
 ```
+
+#### Raspberry PI
+
+If you want to run `whistle-switch` on a Raspberry PI you need to tell it where to find Chromium, because the version from NPM doesn't work the PI's ARM processor.
+
+```sh
+WHISTLE_SWITCH_CHROME_EXECUTABLE_PATH=$(which chromium-browser) whistle-switch
+```
+
+For more info, check out [my post on running headless chrome on a PI](https://colbyr.com/blog/chrome-ears-only).
 
 ### Connect with Homekit
 
