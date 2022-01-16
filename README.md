@@ -34,7 +34,28 @@ Once the switch is running on your local network, you should be able to add it t
 
 </details>
 
-### Advanced Configuration
+### Whistle "Buttons"
+
+The switch has three built-in "buttons" that recognize different musical patterns.
+It'll try to match patterns regardless of key or rhythm.
+
+| Homekit Button   | Pattern             | Example   |
+| :--------------: | :-----------------: | :-------: |
+| Button 1         | One Three Five      | C E G     |
+| Button 2         | Five Three One      | G E C     |
+| Button 3         | One Two One Two One | C D C D C |
+
+<details><summary>Homekit "Button" Map</summary>
+
+These are the musical patterns overlayed on the homekit button config screen.
+
+> Note: Right now, `whistle-switch` only triggers the "Single Press" action.
+
+![5-homekit-buttons](https://user-images.githubusercontent.com/478109/149676783-fa0f0b62-7ddf-45e8-9c12-e5d5cd289880.jpeg)
+
+</details>
+
+## Advanced Configuration
 
 You'll find the default configs in [controller.js](https://github.com/colbyr/whistle-switch/blob/694db8313b22180737626b05d5a4ffeeeb7542dc/src/controller.js#L10-L18).
 The switch should work just fine with the defaults but you can override them by setting local environment variables.
