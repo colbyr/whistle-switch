@@ -59,7 +59,7 @@ It'll try to match patterns regardless of key or rhythm.
 
 > Note: Right now, `whistle-switch` only triggers the "Single Press" action.
 
-<img alt="Whistle Switch Homekit button map" src="https://user-images.githubusercontent.com/478109/149676783-fa0f0b62-7ddf-45e8-9c12-e5d5cd289880.jpeg" height="400" />
+<img alt="Whistle Switch Homekit button map" src="https://user-images.githubusercontent.com/478109/149678710-190e7a8a-321d-4e9d-9a27-44347f552660.jpeg" height="500" />
 
 ## Advanced Configuration
 
