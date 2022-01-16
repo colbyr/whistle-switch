@@ -2,24 +2,21 @@
 set -e
 trap "kill 0" EXIT
 
-# finds out where the script actually lives
-pushd . > /dev/null
-SCRIPT_PATH="${BASH_SOURCE[0]}"
-if ([ -h "${SCRIPT_PATH}" ]); then
-  while([ -h "${SCRIPT_PATH}" ]); do cd "$(dirname "$SCRIPT_PATH")";
-  SCRIPT_PATH=$(readlink "${SCRIPT_PATH}"); done
-fi
-cd "$(dirname ${SCRIPT_PATH})" > /dev/null
-SCRIPT_PATH=$(pwd);
-popd  > /dev/null
+SOURCE=${BASH_SOURCE[0]}
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+  SOURCE=$(readlink "$SOURCE")
+  [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 
 PORT=${WHISTLE_SWITCH_LISTENER_PORT:=6767}
 
 echo "🚧 starting listener..."
-$SCRIPT_PATH/node_modules/.bin/vite --port $PORT $SCRIPT_PATH > /dev/null 2>&1 &
+$DIR/node_modules/.bin/vite --port $PORT $DIR > /dev/null 2>&1 &
 
 sleep 1
 
 echo "🦾 starting controller!"
-node "$SCRIPT_PATH/src/controller.js"
+node "$DIR/src/controller.js"
 
