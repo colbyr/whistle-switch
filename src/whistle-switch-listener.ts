@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import once from "lodash/once";
 import { getFrequenciesByBin } from "./frequency";
 import { FrequencyToNoteConverter, noteFullName, NoteName } from "./note";
@@ -30,7 +32,6 @@ const MODE_SIZE = 24;
 
 async function start() {
   const { now, Synth } = await import("tone");
-  console.log("starting!");
   const getSynth = once(() => new Synth().toDestination());
 
   let pauseListening = false;

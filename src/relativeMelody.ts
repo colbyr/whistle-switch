@@ -111,7 +111,10 @@ export const makeRelativeMelodyMatcher = ({
     last3.push(currentNote);
     const diff = diffNotes(prevNote, currentNote);
     const matchPercent = match(diff, {});
-    if (matchPercent < lastMatchPercent) {
+    if (
+      import.meta.env.VITE_WHISTLE_SWITCH_DEBUG &&
+      matchPercent < lastMatchPercent
+    ) {
       console.info(
         "partial match miss",
         JSON.stringify({
