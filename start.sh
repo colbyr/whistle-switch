@@ -13,7 +13,8 @@ DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 PORT=${WHISTLE_SWITCH_LISTENER_PORT:=6767}
 
 echo "🚧 starting listener..."
-$DIR/node_modules/.bin/vite --port $PORT $DIR > /dev/null 2>&1 &
+VITE_WHISTLE_SWITCH_DEBUG=$WHISTLE_SWITCH_DEBUG\
+  $DIR/node_modules/.bin/vite --port $PORT $DIR > /dev/null 2>&1 &
 
 sleep 1
 
