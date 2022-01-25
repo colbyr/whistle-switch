@@ -81,10 +81,10 @@ async function start() {
     );
     const source = audioContext.createMediaStreamSource(micStream);
 
-    // const introAudio = new Audio("./welcome-short.wav");
-    // const introSource = audioContext.createMediaElementSource(introAudio);
-    // introSource.connect(audioContext.destination);
-    // introAudio.play();
+    const introAudio = new Audio("/welcome-short.wav");
+    const introSource = audioContext.createMediaElementSource(introAudio);
+    introSource.connect(audioContext.destination);
+    introAudio.play();
 
     createMeydaAnalyzer({
       startImmediately: true,
